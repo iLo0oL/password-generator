@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3f4f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1015" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="مولّد كلمات مرور قوية وعشوائية يعمل بالكامل داخل متصفحك.">
+  <title>مولّد كلمات المرور</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%90%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>مولّد كلمات المرور</h1>
+      <p>كلمات مرور قوية وعشوائية، تُولَّد على جهازك ولا تُرسل إلى أي مكان.</p>
+    </header>
+
+    <section class="card" aria-label="كلمة المرور">
+      <div id="password" class="password" dir="ltr" aria-live="polite"></div>
+
+      <div id="strength" class="strength" data-level="0">
+        <div class="strength-bar" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <p class="strength-text">
+          القوة: <strong id="strength-label">—</strong>
+          <span id="strength-bits" class="bits"></span>
+        </p>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="generate" class="btn btn-primary">توليد</button>
+        <button type="button" id="copy" class="btn btn-secondary">نسخ</button>
+      </div>
+    </section>
+
+    <form id="options" class="card options">
+      <div class="field">
+        <div class="field-head">
+          <label for="length">الطول</label>
+          <output id="length-value" for="length" class="length-value">16</output>
+        </div>
+        <input type="range" id="length" min="8" max="32" step="1" value="16">
+      </div>
+
+      <fieldset class="field">
+        <legend>الأحرف المستخدمة</legend>
+        <div class="checks">
+          <label class="check">
+            <input type="checkbox" id="upper" checked>
+            <span class="check-text">
+              <span>حروف كبيرة</span>
+              <code dir="ltr">A-Z</code>
+            </span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="lower" checked>
+            <span class="check-text">
+              <span>حروف صغيرة</span>
+              <code dir="ltr">a-z</code>
+            </span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="digits" checked>
+            <span class="check-text">
+              <span>أرقام</span>
+              <code dir="ltr">0-9</code>
+            </span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="symbols" checked>
+            <span class="check-text">
+              <span>رموز</span>
+              <code dir="ltr">!@#$</code>
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      <label class="check check-wide">
+        <input type="checkbox" id="exclude-similar">
+        <span class="check-text">
+          <span>استبعاد الحروف المتشابهة</span>
+          <code dir="ltr">0 O o 1 l I |</code>
+        </span>
+      </label>
+
+      <p id="alert" class="alert" role="alert"></p>
+    </form>
+
+    <footer class="app-footer">
+      <p>تعمل الصفحة بالكامل في متصفحك باستخدام <code dir="ltr">crypto.getRandomValues</code></p>
+      <p><a href="https://github.com/iLo0oL/password-generator">الشيفرة المصدرية على GitHub</a></p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
